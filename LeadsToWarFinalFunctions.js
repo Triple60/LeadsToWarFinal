@@ -1,14 +1,19 @@
 //This code was written by Elusch21//
 
 function checkCash(cost) {
-	if (cost > cash) return false; //FIX CASH PROBLEM. ADD TWO CASH SYSTEMS
-	else return true;
+    if (cost > cash) {
+        return false; //FIX CASH PROBLEM. ADD TWO CASH SYSTEMS
+    }
+	else {
+        return true;
+    }
 } 
 
 var createRifleman = function(turn) {
-    if(checkCash(Rifleman.cost)) {
+    if(checkCash(25) == true) {
+        console.log('derp');
 		cash = cash - Rifleman.cost;
-    	var name = prompt("Whats the name?")
+    	var name = prompt("What's its name?")
     	var unitArraySize = unitArray.length;
     	var riflemanArraySize = riflemanArray.length;
     	window["Rifleman" + unitArraySize] = new Rifleman(name);
@@ -28,7 +33,7 @@ var createRifleman = function(turn) {
 }
 
 var createTank = function(turn) {
-	if(checkCash(Tank.cost)) {
+	if(checkCash(100) == true) {
 		cash = cash - Tank.cost;
     	var name = prompt("Whats the name?")
     	var unitArraySize = unitArray.length;
