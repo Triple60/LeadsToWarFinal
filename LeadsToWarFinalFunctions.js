@@ -14,10 +14,15 @@ var createRifleman = function(turn) {
     	window["Rifleman" + unitArraySize] = new Rifleman(name);
     	unitArray.push(window["Rifleman" + unitArraySize]);
     	riflemanArray.push(window["Rifleman" + riflemanArraySize]);
-    	if (turn===1) player1UnitArray.push(window["Rifleman" + unitArraySize]);
-    	else if (turn===-1) player2UnitArray.push(window["Rifleman" + unitArraySize]);
-    	addImage(Rifleman);
-    } else {
+    	if (turn === 1) {
+           player1UnitArray.push(window["Rifleman" + unitArraySize]);
+        }
+    	else if (turn === -1) {
+           player2UnitArray.push(window["Rifleman" + unitArraySize]);
+    	   addImage(Rifleman);
+        }
+    }
+    else {
     	alert("Not Enough Money!")
     }
 }
@@ -31,10 +36,15 @@ var createTank = function(turn) {
     	window["Tank" + unitArraySize] = new Tank(name);
     	unitArray.push(window["Tank" + unitArraySize]);
     	tankArray.push(window["Tank" + tankArraySize]);
-    	if (turn===1) player1UnitArray.push(window["Tank" + unitArraySize]);
-    	else if (turn===-1) player2UnitArray.push(window["Tank" + unitArraySize]);
-    	addImage(Tank);
-    } else {
+    	if (turn === 1) {
+            player1UnitArray.push(window["Tank" + unitArraySize]);
+        }
+    	else if (turn === -1) {
+           player2UnitArray.push(window["Tank" + unitArraySize]);
+    	   addImage(Tank);
+        }
+    }
+    else {
     	alert("Not Enough Money!")
     }
 }
