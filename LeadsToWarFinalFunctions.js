@@ -11,7 +11,7 @@ function checkCash(cost) {
 
 var createRifleman = function(turn) {
     if(checkCash(25) == true) {
-		cash = cash - Rifleman.cost;
+		cash = cash - 25;
     	var name = prompt("What's its name?")
     	var unitArraySize = unitArray.length;
     	var riflemanArraySize = riflemanArray.length;
@@ -34,7 +34,7 @@ var createRifleman = function(turn) {
 
 var createTank = function(turn) {
 	if(checkCash(100) == true) {
-		cash = cash - Tank.cost;
+		cash = cash - 100;
     	var name = prompt("Whats the name?")
     	var unitArraySize = unitArray.length;
     	var tankArraySize = tankArray.length;
@@ -43,7 +43,7 @@ var createTank = function(turn) {
     	tankArray.push(window["Tank" + tankArraySize]);
     	if (turn === 1) {
             player1UnitArray.push(window["Tank" + unitArraySize]);
-            adImage(Tank);
+            addImage(Tank);
         }
     	else if (turn === -1) {
            player2UnitArray.push(window["Tank" + unitArraySize]);
