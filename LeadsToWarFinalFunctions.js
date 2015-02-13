@@ -1,29 +1,39 @@
 //This code was written by Elusch21//
 
 function checkCash(cost) {
-	if (cost > cash) return false; //FIX CASH PROBLEM. ADD TWO CASH SYSTEMS
-	else return true;
+    if (cost > cash) {
+        return false; //FIX CASH PROBLEM. ADD TWO CASH SYSTEMS
+    }
+	else {
+        return true;
+    }
 } 
 
 var createRifleman = function(turn) {
-    if(checkCash(Rifleman.cost)) {
+    if(checkCash(25) == true) {
 		cash = cash - Rifleman.cost;
-    	var name = prompt("Whats the name?")
+    	var name = prompt("What's its name?")
     	var unitArraySize = unitArray.length;
     	var riflemanArraySize = riflemanArray.length;
     	window["Rifleman" + unitArraySize] = new Rifleman(name);
     	unitArray.push(window["Rifleman" + unitArraySize]);
     	riflemanArray.push(window["Rifleman" + riflemanArraySize]);
-    	if (turn===1) player1UnitArray.push(window["Rifleman" + unitArraySize]);
-    	else if (turn===-1) player2UnitArray.push(window["Rifleman" + unitArraySize]);
-    	addImage(Rifleman);
-    } else {
+    	if (turn === 1) {
+           player1UnitArray.push(window["Rifleman" + unitArraySize]);
+           addImage(Rifleman);
+        }
+    	else if (turn === -1) {
+           player2UnitArray.push(window["Rifleman" + unitArraySize]);
+    	   addImage(Rifleman);
+        }
+    }
+    else {
     	alert("Not Enough Money!")
     }
 }
 
 var createTank = function(turn) {
-	if(checkCash(Tank.cost)) {
+	if(checkCash(100) == true) {
 		cash = cash - Tank.cost;
     	var name = prompt("Whats the name?")
     	var unitArraySize = unitArray.length;
@@ -31,10 +41,16 @@ var createTank = function(turn) {
     	window["Tank" + unitArraySize] = new Tank(name);
     	unitArray.push(window["Tank" + unitArraySize]);
     	tankArray.push(window["Tank" + tankArraySize]);
-    	if (turn===1) player1UnitArray.push(window["Tank" + unitArraySize]);
-    	else if (turn===-1) player2UnitArray.push(window["Tank" + unitArraySize]);
-    	addImage(Tank);
-    } else {
+    	if (turn === 1) {
+            player1UnitArray.push(window["Tank" + unitArraySize]);
+            adImage(Tank);
+        }
+    	else if (turn === -1) {
+           player2UnitArray.push(window["Tank" + unitArraySize]);
+    	   addImage(Tank);
+        }
+    }
+    else {
     	alert("Not Enough Money!")
     }
 }
