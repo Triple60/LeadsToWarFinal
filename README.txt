@@ -6,12 +6,12 @@ To do:
     
 Doing:
 
-    Making two cash systems (Schreibs)
-    
     Making images local (Ayush)
     
 Done:
     Get functions done (Schreibs)
+
+    Making two cash systems (Schreibs)
     
     Get HTML done (Netz)
     
