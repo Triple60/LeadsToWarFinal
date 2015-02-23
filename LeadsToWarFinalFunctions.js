@@ -50,10 +50,10 @@ var createRifleman = function(turn) {
 var createTank = function(turn) {
 	if(checkCash(100) == true) {
 		if (turn == 1) {
-            cash1 -= 25;
+            cash1 -= 100;
         }
         else if (turn == -1) {
-            cash2 -= 25;
+            cash2 -= 100;
         }
     	var name = prompt("Whats the name?")
     	var unitArraySize = unitArray.length;
