@@ -49,6 +49,7 @@ function addImage(unitType) {
 		if(slotArray[8]===1) {
 			for(var j=5; j<9; j=j+1) {
 				if(slotArray[j]===1) {
+					console.log(j);
 					document.getElementById("imageId" + j).id = "imageId" + (j-1);
 					document.getElementById("divSlotId" + (j-1)).innerHTML = document.getElementById("divSlotId" + j).innerHTML
 					slotArray[j-1] = 1
@@ -68,9 +69,11 @@ function addImage(unitType) {
 
 function removeImage() {
 	if (turn===1) {
-		document.getElementById("divSlotId" + switchFromP1((player2UnitArray.length))). innerHTML = '<img src="" width=9%></button>';
+		document.getElementById("divSlotId" + switchFromP1((player2UnitArray.length))). innerHTML = '<img src="" width=9% id="temporaryId"></img>';
+		document.getElementById("temporaryId").id = ("imageId" + switchFromP1(player2UnitArray.length));
 	} else {
-		document.getElementById("divSlotId" + (player1UnitArray.length)). innerHTML = '<img src="" width=9%></button>';
+		document.getElementById("divSlotId" + (player1UnitArray.length)). innerHTML = '<img src="" width=9% id="temporaryId"></img>';
+		document.getElementById("temporaryId").id = ("imageId" + player1UnitArray.length);
 	}
 }
 
@@ -83,3 +86,4 @@ function removeImage() {
 
 
 </html>
+
