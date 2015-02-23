@@ -68,9 +68,11 @@ function addImage(unitType) {
 
 function removeImage() {
 	if (turn===1) {
-		document.getElementById("divSlotId" + switchFromP1((player2UnitArray.length))). innerHTML = '<img src="" width=9%></button>';
+		document.getElementById("divSlotId" + switchFromP1((player2UnitArray.length))).innerHTML = '<img src="" width=9% id = "temporaryID"></img>';
+        document.getElementById("temporaryId").id = ("imageID" + switchFromP1(player2UnitArray.length));
 	} else {
-		document.getElementById("divSlotId" + (player1UnitArray.length)). innerHTML = '<img src="" width=9%></button>';
+		document.getElementById("divSlotId" + (player1UnitArray.length)). innerHTML = '<img src="" width=9% id = "temporaryID"></img>';
+        document.getElementById("temporaryId").ig = ("imageId" + player1UnitArray.length);
 	}
 }
 
