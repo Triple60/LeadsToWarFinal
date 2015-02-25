@@ -1,11 +1,20 @@
-function checkCash(cost) {
-    if (cost > cash) return false; //FIX CASH PROBLEM. ADD TWO CASH SYSTEMS
-    else return true;
-} 
+var checkCash = function(cost) {
+    if (turn === 1) {
+        var whatCash = cash1;
+    } else {
+        var whatCash = cash2;
+    }
+    if (cost > whatCash) return false 
+    else return true
+}
 
 var createRifleman = function(turn) {
     if(checkCash(Rifleman.cost)) {
-        cash = cash - Rifleman.cost;
+        if (turn === 1) {
+            cash1 = cash1 - Rifleman.cost;
+        } else {
+            cash2 = cash2 - Rifleman.cost;
+        }
         var name = prompt("Whats the name?")
         var unitArraySize = unitArray.length;
         var riflemanArraySize = riflemanArray.length;
@@ -16,13 +25,18 @@ var createRifleman = function(turn) {
         else if (turn===-1) player2UnitArray.push(window["Rifleman" + unitArraySize]);
         addImage(Rifleman);
     } else {
-        alert("Not Enough Money!")
+        alert("Not Enough Money!");  
     }
 }
 
+
 var createTank = function(turn) {
     if(checkCash(Tank.cost)) {
-        cash = cash - Tank.cost;
+        if (turn === 1) {
+            cash1 = cash1 - Tank.cost;
+        } else {
+            cash2 = cash2 - Tank.cost;
+        }
         var name = prompt("Whats the name?")
         var unitArraySize = unitArray.length;
         var tankArraySize = tankArray.length;
@@ -33,15 +47,9 @@ var createTank = function(turn) {
         else if (turn===-1) player2UnitArray.push(window["Tank" + unitArraySize]);
         addImage(Tank);
     } else {
-        alert("Not Enough Money!")
+        alert("Not Enough Money!");
     }
 }
-
-
-    Unit.prototype.levelUp = function() {
-        if(checkCash(this.cost)) this.level ++;
-        else alert("Not Enough Money");
-    };
 
     var attackUnit = function(unitId) {
         var unitId = unitId.substr(7, 7);
@@ -51,14 +59,14 @@ var createTank = function(turn) {
         if (player2UnitArray[0].defense <= 0) {
             console.log(player2UnitArray[0].name + " is dead!");
             removeImage(player2UnitArray[0].riflemanNumber);
-            player2UnitArray.splice(1, player2UnitArray.length); 
+            player2UnitArray.splice(0, 1); 
             
         } 
 
         if (player1UnitArray[0].defense <= 0) {
             console.log(player1UnitArray[0].name + " is dead!");
             removeImage(player1UnitArray[0].riflemanNumber);
-            player1UnitArray.splice(1, player1UnitArray.length); 
+            player1UnitArray.splice(0, 1); 
         } 
 
         turn = turn * -1;
