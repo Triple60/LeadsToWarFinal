@@ -2,13 +2,18 @@ LeadsToWarFinal
 ALWAYS USE BRANCHES, PEOPLE! We got this! :D -Ayush
 To do:
 	
-	Add repositories JQuery and Easel to function inside of the code.
+    Nothing! YAys
     
 Doing:
 
-    Making images local (Schreibs)
+    Add repositories JQuery and Easel to function inside of the code (Netz and Ayush)
+
+    Making Castle have health so you can win (Shreebah)
     
 Done:
+
+    Making images local (Schreibs)
+
     Get functions done (Schreibs)
 
     Making two cash systems (Schreibs)
