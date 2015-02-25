@@ -1,96 +1,89 @@
-<html> <!-- This code was worked on primarily by Ethan Netz -->
+<html> <!-- This code was worked on primarily by Ethan Netz --> 
 
-<head> 
-    <script src="LeadsToWarFinal.js"></script>
-    <script src="LeadsToWarFinalFunctions.js"></script>
-    <link rel="stylesheet" type="text/css" href="LeadsToWarFinal.css">
-</head>
+ 
+<head>  
+    <script src="LeadsToWarFinal.js"></script> 
+    <script src="LeadsToWarFinalFunctions.js"></script> 
+    <link rel="stylesheet" type="text/css" href="LeadsToWarFinal.css"> 
+</head> 
+ 
+<body>  
+<script> 
 
-<body> 
-<script>
+var slotArray = [ , , , , , , , , , ] 
+var turn = 1; 
+ 
+for(var i=0; i<10; i++){ 
+    var divSlot = document.createElement('div' + i); 
+    divSlot.id = ('divSlotId' + i); 
+    document.body.appendChild(divSlot); 
+    if (i === 0 || i === 9){ 
+	document.getElementById('divSlotId' + i).innerHTML = '<img src="http://upload.wikimedia.org/wikipedia/commons/4/48/Penrhyn_Castle.jpg" width=9.99%></img>'; 
+	slotArray[i] = 1 
+} else { 
+	document.getElementById('divSlotId' + i).innerHTML = '<img src="" width=9% id="temporaryId"> </img>'; 
+	document.getElementById("temporaryId").id = ("imageId" + i) 
+    }  
+} 
   
-var slotArray = [ , , , , , , , , , ]
-var turn = 1;
+  
+function addImage(unitType) { 
+	if (turn === 1) { 
+ 		var firstSlot = 1; 
+ 		if(slotArray[1]===1) { 
+ 			for(var j=4; j>0; j=j-1) { 
+ 				if(slotArray[j]===1) { 
+ 					document.getElementById("imageId" + j).id = "imageId" + (j+1); 
+ 					document.getElementById("divSlotId" + (j+1)).innerHTML = document.getElementById("divSlotId" + j).innerHTML; 
+ 					slotArray[j+1] = 1; 
+ 				} 
+ 			} 
+ 		} 
+ 		if(unitType === Rifleman) { 
+ 			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="http://ts1.mm.bing.net/th?&id=HN.608051993852839776&w=300&h=300&c=0&pid=1.9&rs=0&p=0" width=9% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>'; 
+  
+ 		} else if (unitType === Tank) { 
+ 			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="http://ts1.mm.bing.net/th?&id=HN.607992598754233865&w=300&h=300&c=0&pid=1.9&rs=0&p=0" width=9% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>';  
+ 		} 
+ 	} else { 
+ 		var firstSlot = 8; 
+ 		if(slotArray[8]===1) { 
+ 			for(var j=5; j<9; j=j+1) { 
+ 				if(slotArray[j]===1) { 
+ 					document.getElementById("imageId" + j).id = "imageId" + (j-1); 
+ 					document.getElementById("divSlotId" + (j-1)).innerHTML = document.getElementById("divSlotId" + j).innerHTML 
+ 					slotArray[j-1] = 1 
+ 				} 
+ 			} 
+ 		} 
+  
+ 		if(unitType === Rifleman) { 
+ 			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="http://ts1.mm.bing.net/th?&id=HN.608051993852839776&w=300&h=300&c=0&pid=1.9&rs=0&p=0" width=9% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>'; 
+ 		} else if (unitType === Tank) { 
+ 			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="http://ts1.mm.bing.net/th?&id=HN.607992598754233865&w=300&h=300&c=0&pid=1.9&rs=0&p=0" width=9% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>'; 
+ 		} 
+ 	}		 
+ 		slotArray[firstSlot] = 1; 
+ 		turn = turn * -1; 
+ } 
+  
+ function removeImage() { 
+ 	if (turn===1) { 
+ 		document.getElementById("divSlotId" + switchFromP1((player2UnitArray.length))).innerHTML = '<img src="" width=9% id = "temporaryId"></img>'; 
+         document.getElementById("temporaryId").id = ("imageId" + switchFromP1(player2UnitArray.length)); 
+ 	} else { 
+ 		document.getElementById("divSlotId" + (player1UnitArray.length)). innerHTML = '<img src="" width=9% id = "temporaryId"></img>'; 
+         document.getElementById("temporaryId").id = ("imageId" + player1UnitArray.length); 
+ 	} 
+ } 
+  
+  
+</script> 
+<button onClick = "createRifleman(turn)">Buy Rifleman</button> 
+<button onClick = "createTank(turn)">Buy Tank</button> 
+</body> 
 
-for(var i=0; i<10; i++){
-	var divSlot = document.createElement('div' + i);
-	divSlot.id = ('divSlotId' + i);
-	document.body.appendChild(divSlot);
-	if (i === 0 || i === 9){
-		document.getElementById('divSlotId' + i).innerHTML = '<img src="http://upload.wikimedia.org/wikipedia/commons/4/48/Penrhyn_Castle.jpg" width=9.99%></img>';
-		slotArray[i] = 1
-	} else {
-		document.getElementById('divSlotId' + i).innerHTML = '<img src="" width=9% id="temporaryId"> </img>';
-		document.getElementById("temporaryId").id = ("imageId" + i)
-	} 
-}
+ 
 
-
-function addImage(unitType) {
-	if (turn === 1) {
-		var firstSlot = 1;
-		if(slotArray[1]===1) {
-			for(var j=4; j>0; j=j-1) {
-				if(slotArray[j]===1) {
-					document.getElementById("imageId" + j).id = "imageId" + (j+1);
-					document.getElementById("divSlotId" + (j+1)).innerHTML = document.getElementById("divSlotId" + j).innerHTML;
-					slotArray[j+1] = 1;
-				}
-			}
-		}
-		if(unitType === Rifleman) {
-			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="http://ts1.mm.bing.net/th?&id=HN.608051993852839776&w=300&h=300&c=0&pid=1.9&rs=0&p=0" width=9% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>';
-
-		} else if (unitType === Tank) {
-			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="http://upload.wikimedia.org/wikipedia/commons/7/7d/Tank_type74_ja02.jpg" width=9% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>'; 
-		}
-	} else {
-		var firstSlot = 8;
-		if(slotArray[8]===1) {
-			for(var j=5; j<9; j=j+1) {
-				if(slotArray[j]===1) {
-					document.getElementById("imageId" + j).id = "imageId" + (j-1);
-					document.getElementById("divSlotId" + (j-1)).innerHTML = document.getElementById("divSlotId" + j).innerHTML
-					slotArray[j-1] = 1607992598754233865
-				}
-			}
-		}
-
-		if(unitType === Rifleman) {
-			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="http://ts1.mm.bing.net/th?&id=HN.608051993852839776&w=300&h=300&c=0&pid=1.9&rs=0&p=0" width=9% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>';
-		} else if (unitType === Tank) {
-			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="http://upload.wikimedia.org/wikipedia/commons/7/7d/Tank_type74_ja02.jpg" width=9% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>';
-		}
-	}		
-		slotArray[firstSlot] = 1;
-		turn = turn * -1;
-}
-
-function removeImage() {
-	if (turn===1) {
-<<<<<<< HEAD
-		document.getElementById("divSlotId" + switchFromP1((player2UnitArray.length))). innerHTML = '<img src="" width=9% id="temporaryId"></img>';
-		document.getElementById("temporaryId").id = ("imageId" + switchFromP1(player2UnitArray.length));
-	} else {
-		document.getElementById("divSlotId" + (player1UnitArray.length)). innerHTML = '<img src="" width=9% id="temporaryId"></img>';
-		document.getElementById("temporaryId").id = ("imageId" + player1UnitArray.length);
-=======
-		document.getElementById("divSlotId" + switchFromP1((player2UnitArray.length))).innerHTML = '<img src="" width=9% id = "temporaryID"></img>';
-        document.getElementById("temporaryId").id = ("imageID" + switchFromP1(player2UnitArray.length));
-	} else {
-		document.getElementById("divSlotId" + (player1UnitArray.length)). innerHTML = '<img src="" width=9% id = "temporaryID"></img>';
-        document.getElementById("temporaryId").ig = ("imageId" + player1UnitArray.length);
->>>>>>> d6de2e20dc56c597b7df544e562c876adea35629
-	}
-}
-
-
-</script>
-
-	<button onClick = "createRifleman(turn)">Buy Rifleman</button>
-	<button onClick = "createTank(turn)">Buy Tank</button>
-</body>
-
-
-</html>
-
+ 
+</html> 

@@ -4,16 +4,20 @@ var checkCash = function(cost) {
     } else {
         var whatCash = cash2;
     }
-    if (cost > whatCash) return false 
-    else return true
+    if (cost > whatCash) {
+        return false
+    }
+    else {
+        return true
+    }
 }
 
 var createRifleman = function(turn) {
-    if(checkCash(Rifleman.cost)) {
+    if(checkCash(25)) {
         if (turn === 1) {
-            cash1 = cash1 - Rifleman.cost;
+            cash1 = cash1 - 25;
         } else {
-            cash2 = cash2 - Rifleman.cost;
+            cash2 = cash2 - 25;
         }
         var name = prompt("Whats the name?")
         var unitArraySize = unitArray.length;
@@ -31,11 +35,11 @@ var createRifleman = function(turn) {
 
 
 var createTank = function(turn) {
-    if(checkCash(Tank.cost)) {
+    if(checkCash(100)) {
         if (turn === 1) {
-            cash1 = cash1 - Tank.cost;
+            cash1 = cash1 - 100;
         } else {
-            cash2 = cash2 - Tank.cost;
+            cash2 = cash2 - 100;
         }
         var name = prompt("Whats the name?")
         var unitArraySize = unitArray.length;
