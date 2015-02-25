@@ -74,6 +74,8 @@ var createTank = function(turn) {
         } 
 
         turn = turn * -1;
+        cash1 = cash1 + 12.5;
+        cash2 = cash2 + 12.5;
     }
 
 

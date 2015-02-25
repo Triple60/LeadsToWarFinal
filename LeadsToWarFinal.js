@@ -1,13 +1,8 @@
-var cash = 10;
-
-    //This code was worked on primarily by Ayush Sharma.
-
 var cash1 = 100;
 var cash2 = 100;
 
-var Unit = function(cost, level, attack, defense, speed, range, accuracy) {
+var Unit = function(cost, attack, defense, speed, range, accuracy) {
         this.cost = cost;
-        this.level = level;
         this.attack = attack;
         this.defense = defense;
         this.speed = speed;
@@ -19,13 +14,13 @@ var Unit = function(cost, level, attack, defense, speed, range, accuracy) {
 function Rifleman(name) {
     this.name = name;
     this.riflemanNumber = "Rifleman" + riflemanArray.length
-    Unit.call(this, 25, 1, 10, 10, 10, 10, 10);    
+    Unit.call(this, 25, 10, 10, 10, 10, 10);    
 }
 
 function Tank(name) {
     this.name = name;
     this.tankNumber = "Tank" + tankArray.length
-    Unit.call(this, 100, 1, 25, 50, 5, 10, 5);
+    Unit.call(this, 100, 20, 20, 5, 10, 5);
 }
 
 var unitArray = [];
