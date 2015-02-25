@@ -1,12 +1,12 @@
 LeadsToWarFinal
 ALWAYS USE BRANCHES, PEOPLE! We got this! :D -Ayush
 To do:
-
-    Add a movement function, like moving left and right
+	
+	Add repositories JQuery and Easel to function inside of the code.
     
 Doing:
 
-    Making images local (Ayush)
+    Making images local (Schreibs)
     
 Done:
     Get functions done (Schreibs)
