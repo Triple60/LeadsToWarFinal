@@ -31,11 +31,33 @@ var createRifleman = function(turn) {
 
 
 var createTank = function(turn) {
+
     if(checkCash(Tank.cost)) {
         if (turn === 1) {
             cash1 = cash1 - Tank.cost;
         } else {
             cash2 = cash2 - Tank.cost;
+            
+	if(checkCash(100) == true) {
+		if (turn == 1) {
+            cash1 -= 25;
+        }
+        else if (turn == -1) {
+            cash2 -= 25;
+        }
+    	var name = prompt("Whats the name?")
+    	var unitArraySize = unitArray.length;
+    	var tankArraySize = tankArray.length;
+    	window["Tank" + unitArraySize] = new Tank(name);
+    	unitArray.push(window["Tank" + unitArraySize]);
+    	tankArray.push(window["Tank" + tankArraySize]);
+    	if (turn === 1) {
+            player1UnitArray.push(window["Tank" + unitArraySize]);
+            addImage(Tank);
+        }
+    	else if (turn === -1) {
+           player2UnitArray.push(window["Tank" + unitArraySize]);
+    	   addImage(Tank);
         }
         var name = prompt("Whats the name?")
         var unitArraySize = unitArray.length;
