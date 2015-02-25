@@ -11,7 +11,6 @@
   
 var slotArray = [ , , , , , , , , , ]
 var turn = 1;
-
 for(var i=0; i<10; i++){
 	var divSlot = document.createElement('div' + i);
 	divSlot.id = ('divSlotId' + i);
@@ -24,8 +23,6 @@ for(var i=0; i<10; i++){
 		document.getElementById("temporaryId").id = ("imageId" + i)
 	} 
 }
-
-
 function addImage(unitType) {
 	if (turn === 1) {
 		var firstSlot = 1;
@@ -40,7 +37,6 @@ function addImage(unitType) {
 		}
 		if(unitType === Rifleman) {
 			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="http://ts1.mm.bing.net/th?&id=HN.608051993852839776&w=300&h=300&c=0&pid=1.9&rs=0&p=0" width=9% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>';
-
 		} else if (unitType === Tank) {
 			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="http://ts1.mm.bing.net/th?&id=HN.607992598754233865&w=300&h=300&c=0&pid=1.9&rs=0&p=0" width=9% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>'; 
 		}
@@ -55,7 +51,6 @@ function addImage(unitType) {
 				}
 			}
 		}
-
 		if(unitType === Rifleman) {
 			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="http://ts1.mm.bing.net/th?&id=HN.608051993852839776&w=300&h=300&c=0&pid=1.9&rs=0&p=0" width=9% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>';
 		} else if (unitType === Tank) {
@@ -65,7 +60,6 @@ function addImage(unitType) {
 		slotArray[firstSlot] = 1;
 		turn = turn * -1;
 }
-
 function removeImage() {
 	if (turn===1) {
 		document.getElementById("divSlotId" + switchFromP1((player2UnitArray.length))).innerHTML = '<img src="" width=9% id = "temporaryID"></img>';
@@ -75,8 +69,6 @@ function removeImage() {
         document.getElementById("temporaryId").id = ("imageId" + player1UnitArray.length);
 	}
 }
-
-
 </script>
 
 	<button onClick = "createRifleman(turn)">Buy Rifleman</button>
