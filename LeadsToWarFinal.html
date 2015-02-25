@@ -41,7 +41,7 @@ function addImage(unitType) {
  		if(unitType === Rifleman) { 
  			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="RiflemanIMG.jpeg" width=9% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>'; 
   
- 		} else if (unitType === Tank) { 
+		} else if (unitType === Tank) { 
  			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="TankIMG.jpeg" width=9% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>';  
  		} 
  	} else { 
@@ -81,8 +81,4 @@ function addImage(unitType) {
 <button onClick = "createRifleman(turn)">Buy Rifleman</button> 
 <button onClick = "createTank(turn)">Buy Tank</button> 
 </body> 
-
- 
-
- 
 </html>
