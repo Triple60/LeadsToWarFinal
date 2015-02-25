@@ -68,11 +68,19 @@ function addImage(unitType) {
 
 function removeImage() {
 	if (turn===1) {
+<<<<<<< HEAD
 		document.getElementById("divSlotId" + switchFromP1((player2UnitArray.length))). innerHTML = '<img src="" width=9% id="temporaryId"></img>';
 		document.getElementById("temporaryId").id = ("imageId" + switchFromP1(player2UnitArray.length));
 	} else {
 		document.getElementById("divSlotId" + (player1UnitArray.length)). innerHTML = '<img src="" width=9% id="temporaryId"></img>';
 		document.getElementById("temporaryId").id = ("imageId" + player1UnitArray.length);
+=======
+		document.getElementById("divSlotId" + switchFromP1((player2UnitArray.length))).innerHTML = '<img src="" width=9% id = "temporaryID"></img>';
+        document.getElementById("temporaryId").id = ("imageID" + switchFromP1(player2UnitArray.length));
+	} else {
+		document.getElementById("divSlotId" + (player1UnitArray.length)). innerHTML = '<img src="" width=9% id = "temporaryID"></img>';
+        document.getElementById("temporaryId").ig = ("imageId" + player1UnitArray.length);
+>>>>>>> d6de2e20dc56c597b7df544e562c876adea35629
 	}
 }
 
