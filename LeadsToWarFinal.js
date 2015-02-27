@@ -1,5 +1,7 @@
 var cash1 = 100;
 var cash2 = 100;
+var tower1health = 100;
+var tower1health = 100;
 
     //This code was worked on primarily by Ayush Sharma.
 

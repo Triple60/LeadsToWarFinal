@@ -68,6 +68,11 @@ function addImage(unitType) {
  		slotArray[firstSlot] = 1; 
  		turn = turn * -1;
         updateStats();
+        if (turn===1){
+            $('#turnDisplay').html("Player One's Turn!");
+        } else {
+            $('#turnDisplay').html("Player Two's Turn!");
+        } 
  } 
 
 
