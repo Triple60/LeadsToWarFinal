@@ -61,18 +61,20 @@ var createTank = function(turn) {
         else if (turn===-1) player1UnitArray[0].defense =  player1UnitArray[0].defense - player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack; 
         
         if (player2UnitArray[0].defense <= 0) {
-            console.log(player2UnitArray[0].name + " is dead!");
+            alert(player2UnitArray[0].name + " is dead!");
             removeImage(player2UnitArray[0].riflemanNumber);
             player2UnitArray.splice(0, 1); 
             
         } 
 
         if (player1UnitArray[0].defense <= 0) {
-            console.log(player1UnitArray[0].name + " is dead!");
+            alert(player1UnitArray[0].name + " is dead!");
             removeImage(player1UnitArray[0].riflemanNumber);
             player1UnitArray.splice(0, 1); 
         } 
         turn = turn * -1
+        cash1 = cash1 + 12.5;
+        cash2 = cash2 + 12.5;
          if (turn===1) {
             $('#turnDisplay').html("Player One's Turn!");
         } else {
