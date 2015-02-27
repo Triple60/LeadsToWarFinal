@@ -7,7 +7,13 @@
     <link rel="stylesheet" type="text/css" href="LeadsToWarFinal.css"> 
 </head> 
  
-<body>  
+<body> 
+<center>
+<button onClick = "createRifleman(turn)">Buy Rifleman</button> 
+<button onClick = "createTank(turn)">Buy Tank</button> 
+</center> 
+<p id="player1CashDisplay"></p>
+<div align="right"><p id="player2CashDisplay"></p></div>
 <script> 
 
 var slotArray = [ , , , , , , , , , ] 
@@ -77,10 +83,10 @@ function addImage(unitType) {
          document.getElementById("temporaryId").id = ("imageId" + player1UnitArray.length); 
  	} 
  } 
-  
+
+ document.getElementById("player1CashDisplay").innerHTML = "Cash: " + cash1;
+ document.getElementById("player2CashDisplay").innerHTML = "Cash: " + cash2;
   
 </script> 
-<button onClick = "createRifleman(turn)">Buy Rifleman</button> 
-<button onClick = "createTank(turn)">Buy Tank</button> 
 </body> 
 </html>
