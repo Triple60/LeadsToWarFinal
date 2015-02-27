@@ -73,11 +73,7 @@ var createTank = function(turn) {
             player1UnitArray.splice(0, 1); 
         } 
         turn = turn * -1
-         if (turn===1) {
-            $('#turnDisplay').html("Player One's Turn!");
-        } else {
-            $('#turnDisplay').html("Player Two's Turn!");
-        }
+        updateStats();
     }
 
 
@@ -89,9 +85,6 @@ var createTank = function(turn) {
         else if (unitId===5) return 4;  
     }
 
-
-
-
     var switchFromP2 = function(unitId) {
         if (unitId===8) return 1;
         else if (unitId===7) return 2;
@@ -100,3 +93,14 @@ var createTank = function(turn) {
         else if (unitId===4) return 5;  
     }
 
+    var updateStats = function() {
+         if (turn===1) {
+            $('#turnDisplay').html("Player One's Turn!");
+        } else {
+            $('#turnDisplay').html("Player Two's Turn!");
+        }
+         $('#cashDisplay1').html("Player One Has " + cash1 + " Dank")
+         $('#cashDisplay2').html("Player Two Has " + cash2 + " Dank")
+    }
+
+    updateStats()   

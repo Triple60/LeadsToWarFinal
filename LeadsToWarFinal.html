@@ -66,14 +66,12 @@ function addImage(unitType) {
  		} 
  	}		 
  		slotArray[firstSlot] = 1; 
- 		turn = turn * -1; 
-        if (turn===1){
-            $('#turnDisplay').html("Player One's Turn!");
-        } else {
-            $('#turnDisplay').html("Player Two's Turn!");
-        } 
+ 		turn = turn * -1;
+        updateStats();
  } 
-  
+
+
+
  function removeImage() { 
  	if (turn===1) { 
  		$('#divSlotId'+switchFromP1((player2UnitArray.length))).html('<img src="" width=10% id = "temporaryId"></img>'); 
@@ -83,13 +81,12 @@ function addImage(unitType) {
         $('#temporaryId').attr("id", "imageId" + player1UnitArray.length); 
  	} 
 }
-document.getElementById("player1CashDisplay").innerHTML = "Cash: " + cash1;
-document.getElementById("player2CashDisplay").innerHTML = "Cash: " + cash2;
-  
 </script>
 <center>
+    <button class = "buttons" class="cashDisplay" id="cashDisplay1">Player One Has 100 Dank</button>
     <button onClick = "createRifleman(turn)" class="buttons ">Buy<br>Rifleman</button> 
     <button onClick = "createTank(turn)" class="buttons">Buy<br>Tank</button> 
+    <button class = "buttons" class="cashDisplay" id="cashDisplay2">Player Two Has 100 Dank</button>
     <br> <br> 
     <button class = "buttons" id="turnDisplay">Player One's Turn!</button>
 </center>
