@@ -1,5 +1,5 @@
 var checkCash = function(cost) {
-    if (turn === 1) {
+    if (turn === 1) {   
         var whatCash = cash1;
     } else {
         var whatCash = cash2;
@@ -72,10 +72,12 @@ var createTank = function(turn) {
             removeImage(player1UnitArray[0].riflemanNumber);
             player1UnitArray.splice(0, 1); 
         } 
-
-        turn = turn * -1;
-        cash1 = cash1 + 12.5;
-        cash2 = cash2 + 12.5;
+        turn = turn * -1
+         if (turn===1) {
+            $('#turnDisplay').html("Player One's Turn!");
+        } else {
+            $('#turnDisplay').html("Player Two's Turn!");
+        }
     }
 
 

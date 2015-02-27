@@ -3,7 +3,8 @@
  
 <head>  
     <script src="LeadsToWarFinal.js"></script> 
-    <script src="LeadsToWarFinalFunctions.js"></script> 
+    <script src="LeadsToWarFinalFunctions.js"></script>
+    <script src="jquery-1.11.2.js"></script>
     <link rel="stylesheet" type="text/css" href="LeadsToWarFinal.css"> 
 </head> 
  
@@ -11,8 +12,7 @@
 <p id="player1CashDisplay"></p>
 <div align="right"><p id="player2CashDisplay"></p></div>
 <div align="center" id="turnCounter"></div>
-<script> 
-
+<script>
 var slotArray = [ , , , , , , , , , ] 
 var turn = 1; 
  
@@ -21,11 +21,11 @@ for(var i=0; i<10; i++){
     divSlot.id = ('divSlotId' + i); 
     document.body.appendChild(divSlot); 
     if (i === 0 || i === 9){ 
-	document.getElementById('divSlotId' + i).innerHTML = '<img src="CastleIMG.jpeg" width=9.99%></img>'; 
+	$('#divSlotId'+i).html('<img src="CastleIMG.jpeg" width=10% class = "base"></img>'); 
 	slotArray[i] = 1 
 } else { 
-	document.getElementById('divSlotId' + i).innerHTML = '<img src="" width=9% id="temporaryId"> </img>'; 
-	document.getElementById("temporaryId").id = ("imageId" + i) 
+	$('#divSlotId'+i).html('<img src="" width=9.68% id="temporaryId"> </img>'); 
+	$('#temporaryId').attr("id", 'imageId' + i); 
     }  
 } 
   
@@ -35,24 +35,24 @@ function addImage(unitType) {
  		if(slotArray[1]===1) { 
  			for(var j=4; j>0; j=j-1) { 
  				if(slotArray[j]===1) { 
- 					document.getElementById("imageId" + j).id = "imageId" + (j+1); 
+ 					$('#imageId' + j).attr("id", "imageId" + (j+1)); 
  					document.getElementById("divSlotId" + (j+1)).innerHTML = document.getElementById("divSlotId" + j).innerHTML; 
  					slotArray[j+1] = 1; 
  				} 
  			} 
  		} 
- 		if(unitType === Rifleman) { 
- 			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="RiflemanIMG.jpeg" width=9% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>'; 
+ 		if(unitType === Rifleman) {
+ 			$('#divSlotId'+firstSlot).html('<img src="RiflemanIMG.jpeg" width=10% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>'); 
   
-		} else if (unitType === Tank) { 
- 			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="TankIMG.jpeg" width=9% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>';  
+ 		} else if (unitType === Tank) { 
+ 			$('#divSlotId'+firstSlot).html('<img src="TankIMG.jpeg" width=10% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>');  
  		} 
  	} else { 
  		var firstSlot = 8; 
  		if(slotArray[8]===1) { 
  			for(var j=5; j<9; j=j+1) { 
  				if(slotArray[j]===1) { 
- 					document.getElementById("imageId" + j).id = "imageId" + (j-1); 
+ 					$('#imageId' + j).attr("id", "imageId"+(j-1)); 
  					document.getElementById("divSlotId" + (j-1)).innerHTML = document.getElementById("divSlotId" + j).innerHTML 
  					slotArray[j-1] = 1 
  				} 
@@ -60,48 +60,40 @@ function addImage(unitType) {
  		} 
   
  		if(unitType === Rifleman) { 
- 			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="RiflemanIMG.jpeg" width=9% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>'; 
+ 			$('#divSlotId'+firstSlot).html('<img src="RiflemanIMG.jpeg" width=10% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>'); 
  		} else if (unitType === Tank) { 
- 			document.getElementById("divSlotId" + firstSlot).innerHTML = '<img src="TankIMG.jpeg" width=9% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>'; 
+ 			$('#divSlotId'+firstSlot).html('<img src="TankIMG.jpeg" width=10% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>'); 
  		} 
  	}		 
  		slotArray[firstSlot] = 1; 
- 		turn = turn * -1;
- 		cash1 = cash1 + 12.5;
-        cash2 = cash2 + 12.5;
-} 
+ 		turn = turn * -1; 
+        if (turn===1){
+            $('#turnDisplay').html("Player One's Turn!");
+        } else {
+            $('#turnDisplay').html("Player Two's Turn!");
+        } 
+ } 
   
  function removeImage() { 
  	if (turn===1) { 
- 		document.getElementById("divSlotId" + switchFromP1((player2UnitArray.length))).innerHTML = '<img src="" width=9% id = "temporaryId"></img>'; 
-         document.getElementById("temporaryId").id = ("imageId" + switchFromP1(player2UnitArray.length)); 
+ 		$('#divSlotId'+switchFromP1((player2UnitArray.length))).html('<img src="" width=10% id = "temporaryId"></img>'); 
+        $('#temporaryId').attr("id", "imageId" + switchFromP1(player2UnitArray.length)); 
  	} else { 
- 		document.getElementById("divSlotId" + (player1UnitArray.length)). innerHTML = '<img src="" width=9% id = "temporaryId"></img>'; 
-        document.getElementById("temporaryId").id = ("imageId" + player1UnitArray.length); 
+ 		$('#divSlotId'+(player1UnitArray.length)).html('<img src="" width=10% id = "temporaryId"></img>'); 
+        $('#temporaryId').attr("id", "imageId" + player1UnitArray.length); 
  	} 
 }
 document.getElementById("player1CashDisplay").innerHTML = "Cash: " + cash1;
 document.getElementById("player2CashDisplay").innerHTML = "Cash: " + cash2;
   
-if (turn === 1) {
-    window.onload = function() {
-        document.getElementById("turnCounter").innerHTML = "It's Player 1's Turn.";
-    }
-    window.onload();
-}
-else if (turn === -1) {
-    window.onload = function() {
-        document.getElementById("turnCounter").innerHTML = "It's Player 2's Turn.";
-    }
-    window.onload();
-}
-    
-    
 </script>
 <center>
-<button onClick = "createRifleman(turn)">Buy Rifleman</button> 
-<button onClick = "createTank(turn)">Buy Tank</button>
+    <button onClick = "createRifleman(turn)" class="buttons ">Buy<br>Rifleman</button> 
+    <button onClick = "createTank(turn)" class="buttons">Buy<br>Tank</button> 
+    <br> <br> 
+    <button class = "buttons" id="turnDisplay">Player One's Turn!</button>
 </center>
+</body>
 
 </body> 
 </html>
