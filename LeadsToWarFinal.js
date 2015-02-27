@@ -2,8 +2,8 @@ var cash = 10;
 
     //This code was worked on primarily by Ayush Sharma.
 
-var cash1 = 100;
-var cash2 = 100;
+var cash1 = 100000000;
+var cash2 = 110000;
 
 var Unit = function(cost, level, attack, defense, speed, range, accuracy) {
         this.cost = cost;
