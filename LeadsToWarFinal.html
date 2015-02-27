@@ -78,9 +78,23 @@ function addImage(unitType) {
  	} 
  } 
   
-  
+if (turn === 1) {
+    window.onload = function() {
+        document.getElementById("turnCounter").innerHTML = "It's Player 1's Turn.";
+    }
+    window.onload();
+}
+else if (turn === -1) {
+    window.onload = function() {
+        document.getElementById("turnCounter").innerHTML = "It's Player 2's Turn.";
+    }
+    window.onload();
+}
+    
+    
 </script> 
 <button onClick = "createRifleman(turn)">Buy Rifleman</button> 
-<button onClick = "createTank(turn)">Buy Tank</button> 
+<button onClick = "createTank(turn)">Buy Tank</button>
+<div id="turnCounter"></div>
 </body> 
 </html>
