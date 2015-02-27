@@ -57,9 +57,22 @@ var createTank = function(turn) {
 
     var attackUnit = function(unitId) {
         var unitId = unitId.substr(7, 7);
-        if (turn===1) player2UnitArray[0].defense = player2UnitArray[0].defense - player1UnitArray[unitId-1].attack;
-        else if (turn===-1) player1UnitArray[0].defense =  player1UnitArray[0].defense - player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack; 
-        
+        if (turn===1) {
+            if (player2UnitArray.length !== 0) {
+                player2UnitArray[0].defense = player2UnitArray[0].defense - player1UnitArray[unitId-1].attack;
+            }
+            if (player2UnitArray.length == 0) {
+                tower1health -= player1UnitArray[unitID-1].attack;
+            }
+        }
+        else if (turn===-1) {
+            if (player1UnitArray.length !== 0) {
+                player1UnitArray[0].defense =  player1UnitArray[0].defense - player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack;
+            }
+            if (player1UnitArray.length == 0) {
+                tower2health -= player2UnitArray[unitId-1].attack;
+            }
+        }
         if (player2UnitArray[0].defense <= 0) {
             alert(player2UnitArray[0].name + " is dead!");
             removeImage(player2UnitArray[0].riflemanNumber);
@@ -71,7 +84,7 @@ var createTank = function(turn) {
             alert(player1UnitArray[0].name + " is dead!");
             removeImage(player1UnitArray[0].riflemanNumber);
             player1UnitArray.splice(0, 1); 
-        } 
+        }
         turn = turn * -1;
         cash1 = cash1 + 12.5;
         cash2 = cash2 + 12.5;
