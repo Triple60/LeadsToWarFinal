@@ -1,14 +1,10 @@
 var cash1 = 100;
 var cash2 = 100;
 
-var Unit = function(cost, attack, defense, speed, range, accuracy) {
+var Unit = function(cost, attack, defense) {
         this.cost = cost;
         this.attack = attack;
         this.defense = defense;
-        this.speed = speed;
-        this.range = range;
-        this.accuracy = accuracy;
-        Unit.instances = 0;
 }
 
 function Rifleman(name) {

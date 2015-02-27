@@ -7,7 +7,9 @@
     <link rel="stylesheet" type="text/css" href="LeadsToWarFinal.css"> 
 </head> 
  
-<body>  
+<body> 
+<p id="player1CashDisplay"></p>
+<div align="right"><p id="player2CashDisplay"></p></div>
 <script> 
 
 var slotArray = [ , , , , , , , , , ] 
@@ -66,7 +68,7 @@ function addImage(unitType) {
  		turn = turn * -1;
  		cash1 = cash1 + 12.5;
         cash2 = cash2 + 12.5;
- } 
+} 
   
  function removeImage() { 
  	if (turn===1) { 
@@ -74,9 +76,11 @@ function addImage(unitType) {
          document.getElementById("temporaryId").id = ("imageId" + switchFromP1(player2UnitArray.length)); 
  	} else { 
  		document.getElementById("divSlotId" + (player1UnitArray.length)). innerHTML = '<img src="" width=9% id = "temporaryId"></img>'; 
-         document.getElementById("temporaryId").id = ("imageId" + player1UnitArray.length); 
+        document.getElementById("temporaryId").id = ("imageId" + player1UnitArray.length); 
  	} 
- } 
+}
+document.getElementById("player1CashDisplay").innerHTML = "Cash: " + cash1;
+document.getElementById("player2CashDisplay").innerHTML = "Cash: " + cash2;
   
 if (turn === 1) {
     window.onload = function() {
@@ -92,9 +96,12 @@ else if (turn === -1) {
 }
     
     
-</script> 
+</script>
+<center>
 <button onClick = "createRifleman(turn)">Buy Rifleman</button> 
 <button onClick = "createTank(turn)">Buy Tank</button>
 <div id="turnCounter"></div>
+</center>
+
 </body> 
 </html>
