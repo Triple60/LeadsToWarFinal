@@ -18,13 +18,22 @@
 	opacity: 0.8;
 } 
 
+#cashDisplay1 {
+	position: absolute;	
+	left: 1%;
+}
+
+
+#cashDisplay2 {
+	position: absolute;	
+	right: 1%;
+}
+
 
 #turnDisplay {
 	width: 20%;
 	height: 15%;
 } 
-
-
 
 body {
 	background-color: #4FB384;

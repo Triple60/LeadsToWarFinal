@@ -60,24 +60,41 @@ var createTank = function(turn) {
         if (turn===1) {
             var critChance = _.random(0, 100);
             if (critChance < 74) {
-                player2UnitArray[0].defense = player2UnitArray[0].defense - player1UnitArray[unitId-1].attack;
+                if (player2UnitArray.length !== 0) {
+                    player2UnitArray[0].defense = player2UnitArray[0].defense - player1UnitArray[unitId-1].attack;
+                }
+                if (player2UnitArray.length == 0) {
+                    tower1health -= player1UnitArray[unitID-1].attack;
+                }
             }
             else if (critChance >= 75) {
-                player2UnitArray[0].defense = player2UnitArray[0].defense - (2 * (player1UnitArray[unitId-1].attack));
-                console.log("Critical Hit!");
+                if (player2UnitArray.length !== 0) {
+                    player2UnitArray[0].defense = player2UnitArray[0].defense - (2 * (player1UnitArray[unitId-1].attack));
+                }
+                if (player2UnitArray.length == 0) {
+                    tower1health -= (2 * (player1UnitArray[unitID-1].attack));
+                }
             }
         }
         else if (turn===-1) {
             var critChance = _.random(0, 100);
-            if (critChance < 74) {
-                player1UnitArray[0].defense =  player1UnitArray[0].defense - player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack;
+            if (critChance < 74) {                
+                if (player1UnitArray.length !== 0) {
+                    player1UnitArray[0].defense =  player1UnitArray[0].defense - player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack;
+                }
+                if (player1UnitArray.length == 0) {
+                    tower2health -= player2UnitArray[unitId-1].attack;
+                }
             }
             else if (critChance >= 75) {
-                player1UnitArray[0].defense =  player1UnitArray[0].defense - (2 * (player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack));
-                console.log("Critical Hit!");
+                if (player1UnitArray.length !== 0) {
+                    player1UnitArray[0].defense =  player1UnitArray[0].defense - (2 * (player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack));
+                }
+                if (player1UnitArray.length == 0) {
+                    tower2health -= (2 * (player2UnitArray[unitId-1].attack));
+                }
             }
         }
-        
         if (player2UnitArray[0].defense <= 0) {
             alert(player2UnitArray[0].name + " is dead!");
             removeImage(player2UnitArray[0].riflemanNumber);
@@ -90,10 +107,9 @@ var createTank = function(turn) {
             removeImage(player1UnitArray[0].riflemanNumber);
             player1UnitArray.splice(0, 1); 
         } 
-        turn = turn * -1;
-        cash1 = cash1 + 12.5;
-        cash2 = cash2 + 12.5;
-         if (turn===1) {
+        turn = turn * -1
+        updateStats();
+        if (turn===1) {
             $('#turnDisplay').html("Player One's Turn!");
         } else {
             $('#turnDisplay').html("Player Two's Turn!");
@@ -109,9 +125,6 @@ var createTank = function(turn) {
         else if (unitId===5) return 4;  
     }
 
-
-
-
     var switchFromP2 = function(unitId) {
         if (unitId===8) return 1;
         else if (unitId===7) return 2;
@@ -120,3 +133,14 @@ var createTank = function(turn) {
         else if (unitId===4) return 5;  
     }
 
+    var updateStats = function() {
+         if (turn===1) {
+            $('#turnDisplay').html("Player One's Turn!");
+        } else {
+            $('#turnDisplay').html("Player Two's Turn!");
+        }
+         $('#cashDisplay1').html("Player One Has $" + cash1)
+         $('#cashDisplay2').html("Player Two Has $" + cash2)
+    }
+
+    updateStats()   

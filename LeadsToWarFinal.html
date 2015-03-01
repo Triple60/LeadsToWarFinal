@@ -3,7 +3,6 @@
  
 <head>  
     <script src="LeadsToWarFinal.js"></script> 
-    <script src="LeadsToWarFinalFunctions.js"></script>
     <script src="jquery-1.11.2.js"></script>
     <script src="underscore.js"></script>
     <link rel="stylesheet" type="text/css" href="LeadsToWarFinal.css"> 
@@ -15,8 +14,10 @@
 <div align="center" id="turnCounter"></div>
 <script>
 var slotArray = [ , , , , , , , , , ] 
-var turn = 1; 
- 
+var turn = 1
+</script>
+<script src="LeadsToWarFinalFunctions.js"></script>
+<script>
 for(var i=0; i<10; i++){ 
     var divSlot = document.createElement('div' + i); 
     divSlot.id = ('divSlotId' + i); 
@@ -68,15 +69,16 @@ function addImage(unitType) {
  	}		 
  		slotArray[firstSlot] = 1; 
  		turn = turn * -1;
-        cash1 = cash1 + 12.5;
-        cash2 = cash2 + 12.5;
+        updateStats();
         if (turn===1){
             $('#turnDisplay').html("Player One's Turn!");
         } else {
             $('#turnDisplay').html("Player Two's Turn!");
         } 
  } 
-  
+
+
+
  function removeImage() { 
  	if (turn===1) { 
  		$('#divSlotId'+switchFromP1((player2UnitArray.length))).html('<img src="" width=10% id = "temporaryId"></img>'); 
@@ -87,15 +89,12 @@ function addImage(unitType) {
  	} 
 }
 
-document.getElementById("player1CashDisplay").innerHTML = "Cash: " + cash1;
-document.getElementById("player2CashDisplay").innerHTML = "Cash: " + cash2;
-    
-
-  
 </script>
 <center>
+    <button class = "buttons" class="cashDisplay" id="cashDisplay1">Player One Has $100</button>
     <button onClick = "createRifleman(turn)" class="buttons ">Buy<br>Rifleman</button> 
     <button onClick = "createTank(turn)" class="buttons">Buy<br>Tank</button> 
+    <button class = "buttons" class="cashDisplay" id="cashDisplay2">Player Two Has $100</button>
     <br> <br> 
     <button class = "buttons" id="turnDisplay">Player One's Turn!</button>
 </center>
