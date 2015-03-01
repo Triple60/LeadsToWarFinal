@@ -5,9 +5,10 @@
     <script src="LeadsToWarFinal.js"></script> 
     <script src="LeadsToWarFinalFunctions.js"></script>
     <script src="jquery-1.11.2.js"></script>
+    <script src="underscore.js"></script>
     <link rel="stylesheet" type="text/css" href="LeadsToWarFinal.css"> 
 </head> 
- 
+
 <body> 
 <p id="player1CashDisplay"></p>
 <div align="right"><p id="player2CashDisplay"></p></div>
@@ -85,8 +86,11 @@ function addImage(unitType) {
         $('#temporaryId').attr("id", "imageId" + player1UnitArray.length); 
  	} 
 }
+
 document.getElementById("player1CashDisplay").innerHTML = "Cash: " + cash1;
 document.getElementById("player2CashDisplay").innerHTML = "Cash: " + cash2;
+    
+
   
 </script>
 <center>

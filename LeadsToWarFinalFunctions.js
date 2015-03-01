@@ -57,8 +57,26 @@ var createTank = function(turn) {
 
     var attackUnit = function(unitId) {
         var unitId = unitId.substr(7, 7);
-        if (turn===1) player2UnitArray[0].defense = player2UnitArray[0].defense - player1UnitArray[unitId-1].attack;
-        else if (turn===-1) player1UnitArray[0].defense =  player1UnitArray[0].defense - player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack; 
+        if (turn===1) {
+            var critChance = _.random(0, 100);
+            if (critChance < 74) {
+                player2UnitArray[0].defense = player2UnitArray[0].defense - player1UnitArray[unitId-1].attack;
+            }
+            else if (critChance >= 75) {
+                player2UnitArray[0].defense = player2UnitArray[0].defense - (2 * (player1UnitArray[unitId-1].attack));
+                console.log("Critical Hit!");
+            }
+        }
+        else if (turn===-1) {
+            var critChance = _.random(0, 100);
+            if (critChance < 74) {
+                player1UnitArray[0].defense =  player1UnitArray[0].defense - player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack;
+            }
+            else if (critChance >= 75) {
+                player1UnitArray[0].defense =  player1UnitArray[0].defense - (2 * (player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack));
+                console.log("Critical Hit!");
+            }
+        }
         
         if (player2UnitArray[0].defense <= 0) {
             alert(player2UnitArray[0].name + " is dead!");
