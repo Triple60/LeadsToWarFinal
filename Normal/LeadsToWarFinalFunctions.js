@@ -107,7 +107,9 @@ var createTank = function(turn) {
             removeImage(player1UnitArray[0].riflemanNumber);
             player1UnitArray.splice(0, 1); 
         } 
-        turn = turn * -1
+        turn = turn * -1;
+        cash1 += 12.5;
+        cash1 += 12.5;
         updateStats();
         if (turn===1) {
             $('#turnDisplay').html("Player One's Turn!");
