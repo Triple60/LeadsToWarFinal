@@ -70,9 +70,11 @@ var createTank = function(turn) {
             else if (critChance >= 75) {
                 if (player2UnitArray.length !== 0) {
                     player2UnitArray[0].defense = player2UnitArray[0].defense - (2 * (player1UnitArray[unitId-1].attack));
+                    alert("Critical Hit!");
                 }
                 if (player2UnitArray.length == 0) {
                     tower1health -= (2 * (player1UnitArray[unitID-1].attack));
+                    alert("Critical Hit!");
                 }
             }
         }
@@ -89,9 +91,11 @@ var createTank = function(turn) {
             else if (critChance >= 75) {
                 if (player1UnitArray.length !== 0) {
                     player1UnitArray[0].defense =  player1UnitArray[0].defense - (2 * (player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack));
+                    alert("Critical Hit!");
                 }
                 if (player1UnitArray.length == 0) {
                     tower2health -= (2 * (player2UnitArray[unitId-1].attack));
+                    alert("Critical Hit!");
                 }
             }
         }
@@ -136,13 +140,23 @@ var createTank = function(turn) {
     }
 
     var updateStats = function() {
-         if (turn===1) {
+        if (turn===1) {
             $('#turnDisplay').html("Player One's Turn!");
         } else {
             $('#turnDisplay').html("Player Two's Turn!");
         }
-         $('#cashDisplay1').html("Player One Has $" + cash1)
-         $('#cashDisplay2').html("Player Two Has $" + cash2)
+        $('#cashDisplay1').html("Player One Has $" + cash1)
+        $('#cashDisplay2').html("Player Two Has $" + cash2)
+        if(player1UnitArray.length > 0) {
+            $('#defenseDisplay1').html("Front Line Soldier Has " + player1UnitArray[0].defense + " Health");
+        } else {
+            $('#defenseDisplay1').html("No Front Line Soldier");
+        }
+         if(player2UnitArray.length > 0) {
+            $('#defenseDisplay2').html("Front Line Soldier Has " + player2UnitArray[0].defense + " Health");
+        } else {
+            $('#defenseDisplay2').html("No Front Line Soldier");
+        }
     }
 
     updateStats()   

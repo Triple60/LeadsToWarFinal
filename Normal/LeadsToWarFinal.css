@@ -46,3 +46,13 @@ body {
 .base {
 	height: 15%
 }
+
+#defenseDisplay1 {
+    position: absolute;
+    left: 1%;
+}
+
+#defenseDisplay2 {
+    position: absolute;
+    right: 1%;
+}
