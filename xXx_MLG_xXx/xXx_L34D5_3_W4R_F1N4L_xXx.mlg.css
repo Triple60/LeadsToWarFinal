@@ -36,7 +36,8 @@
 } 
 
 body {
-	background-color: #4FB384;
+	background-image: url(../Images/FazeLogo.jpg);
+    background-size: 1400px 800px;
 }
 
 .player1 {
