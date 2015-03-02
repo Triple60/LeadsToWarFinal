@@ -3,27 +3,25 @@
  
 <head>  
     <script src="LeadsToWarFinal.js"></script> 
-    <script src="../Libraries/jquery-1.11.2.js"></script>
-    <script src="../Libraries/underscore.js"></script>
+    <script src="LeadsToWarFinalFunctions.js"></script>
+    <script src="jquery-1.11.2.js"></script>
     <link rel="stylesheet" type="text/css" href="LeadsToWarFinal.css"> 
 </head> 
-
+ 
 <body> 
 <p id="player1CashDisplay"></p>
 <div align="right"><p id="player2CashDisplay"></p></div>
 <div align="center" id="turnCounter"></div>
 <script>
 var slotArray = [ , , , , , , , , , ] 
-var turn = 1;
-</script>
-<script src="LeadsToWarFinalFunctions.js"></script>
-<script>
+var turn = 1; 
+ 
 for(var i=0; i<10; i++){ 
     var divSlot = document.createElement('div' + i); 
     divSlot.id = ('divSlotId' + i); 
     document.body.appendChild(divSlot); 
     if (i === 0 || i === 9){ 
-	$('#divSlotId'+i).html('<img src="../Images/CastleIMG.jpeg" width=10% class = "base"></img>'); 
+	$('#divSlotId'+i).html('<img src="CastleIMG.jpeg" width=10% class = "base"></img>'); 
 	slotArray[i] = 1 
 } else { 
 	$('#divSlotId'+i).html('<img src="" width=9.68% id="temporaryId"> </img>'); 
@@ -44,10 +42,10 @@ function addImage(unitType) {
  			} 
  		} 
  		if(unitType === Rifleman) {
- 			$('#divSlotId'+firstSlot).html('<img src="../Images/RiflemanIMG.jpeg" width=10% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>'); 
+ 			$('#divSlotId'+firstSlot).html('<img src="RiflemanIMG.jpeg" width=10% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>'); 
   
  		} else if (unitType === Tank) { 
- 			$('#divSlotId'+firstSlot).html('<img src="../Images/TankIMG.jpeg" width=10% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>');  
+ 			$('#divSlotId'+firstSlot).html('<img src="TankIMG.jpeg" width=10% class="player1" id="imageId1" onClick="attackUnit(this.id)"></img>');  
  		} 
  	} else { 
  		var firstSlot = 8; 
@@ -62,15 +60,13 @@ function addImage(unitType) {
  		} 
   
  		if(unitType === Rifleman) { 
- 			$('#divSlotId'+firstSlot).html('<img src="../Images/RiflemanIMG.jpeg" width=10% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>'); 
+ 			$('#divSlotId'+firstSlot).html('<img src="RiflemanIMG.jpeg" width=10% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>'); 
  		} else if (unitType === Tank) { 
- 			$('#divSlotId'+firstSlot).html('<img src="../Images/TankIMG.jpeg" width=10% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>'); 
+ 			$('#divSlotId'+firstSlot).html('<img src="TankIMG.jpeg" width=10% class="player2" id="imageId8" onClick="attackUnit(this.id)"></img>'); 
  		} 
  	}		 
  		slotArray[firstSlot] = 1; 
  		turn = turn * -1;
-        cash1 += 12.5;
-        cash2 += 12.5;
         updateStats();
         if (turn===1){
             $('#turnDisplay').html("Player One's Turn!");
@@ -90,17 +86,14 @@ function addImage(unitType) {
         $('#temporaryId').attr("id", "imageId" + player1UnitArray.length); 
  	} 
 }
-
 </script>
 <center>
-    <button class = "buttons" class="cashDisplay" id="cashDisplay1">Player One Has $100</button>
+    <button class = "buttons" class="cashDisplay" id="cashDisplay1">Player One Has 100 Dank</button>
     <button onClick = "createRifleman(turn)" class="buttons ">Buy<br>Rifleman</button> 
     <button onClick = "createTank(turn)" class="buttons">Buy<br>Tank</button> 
-    <button class = "buttons" class="cashDisplay" id="cashDisplay2">Player Two Has $100</button>
+    <button class = "buttons" class="cashDisplay" id="cashDisplay2">Player Two Has 100 Dank</button>
     <br> <br> 
-    <button class = "buttons" class="defenseDisplay" id="defenseDisplay1">No Front Line Soldier</button>
     <button class = "buttons" id="turnDisplay">Player One's Turn!</button>
-    <button class = "buttons" class="defenseDisplay" id="defenseDisplay2">No Front Line Soldier</button>
 </center>
 </body>
 
