@@ -1,5 +1,5 @@
-var cash1 = 100;
-var cash2 = 100;
+var cash1 = 75;
+var cash2 = 75;
 var tower1health = 100;
 var tower1health = 100;
 var turn = 1;
@@ -20,7 +20,7 @@ function Rifleman(name) {
 function Tank(name) {
     this.name = name;
     this.tankNumber = "Tank" + tankArray.length
-    Unit.call(this, 100, 20, 20, 5, 10, 5);
+    Unit.call(this, 100, 15, 20, 5, 10, 5);
 }
 
 var unitArray = [];
@@ -28,6 +28,7 @@ var player1UnitArray = [];
 var player2UnitArray = [];
 var riflemanArray = [];
 var tankArray = [];
+var notFirstRound = false;
 
 
 

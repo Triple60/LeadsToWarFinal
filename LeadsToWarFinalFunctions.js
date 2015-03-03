@@ -87,6 +87,7 @@ var createTank = function(turn) {
                 }
             }
             else if (critChance >= 75) {
+                alert("Critical Hit!");
                 if (player1UnitArray.length !== 0) {
                     player1UnitArray[0].defense =  player1UnitArray[0].defense - (2 * (player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack));
                 }
@@ -111,7 +112,6 @@ var createTank = function(turn) {
             player1UnitArray.splice(0, 1); 
         }
 
-        turn = turn * -1;
         updateStats();
 
     }
@@ -134,10 +134,13 @@ var createTank = function(turn) {
     }
 
     var updateStats = function() {
+        turn = turn * -1;
          if (turn===1) {
             $('#turnDisplay').html("Player One's Turn!");
+            if(notFirstRound) cash2 = cash2 + 25;
         } else {
             $('#turnDisplay').html("Player Two's Turn!");
+            cash1 = cash1 + 25
         }
          $('#cashDisplay1').html("Player One Has " + cash1 + " Dank")
          $('#cashDisplay2').html("Player Two Has " + cash2 + " Dank")
@@ -152,5 +155,4 @@ var createTank = function(turn) {
             $('#defenseDisplay2').html("No Front Line Soldier");
         }
     }
-
-    updateStats()   
+   

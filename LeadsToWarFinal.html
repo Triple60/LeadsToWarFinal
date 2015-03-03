@@ -29,6 +29,7 @@ for(var i=0; i<10; i++){
 } 
   
 function addImage(unitType) { 
+    notFirstRound = true;
 	if (turn === 1) { 
  		var firstSlot = 1; 
  		if(slotArray[1]===1) { 
@@ -65,7 +66,6 @@ function addImage(unitType) {
  		} 
  	}		 
  		slotArray[firstSlot] = 1; 
- 		turn = turn * -1;
         updateStats();
         if (turn===1){
             $('#turnDisplay').html("Player One's Turn!");
@@ -87,10 +87,11 @@ function addImage(unitType) {
 }
 </script>
 <center>
-    <button class = "buttons" class="cashDisplay" id="cashDisplay1">Player One Has 100 Dank</button>
+    <button class = "buttons" class="cashDisplay" id="cashDisplay1">Player One Has 75 Dank</button>
     <button onClick = "createRifleman(turn)" class="buttons ">Buy<br>Rifleman</button> 
     <button onClick = "createTank(turn)" class="buttons">Buy<br>Tank</button> 
-    <button class = "buttons" class="cashDisplay" id="cashDisplay2">Player Two Has 100 Dank</button>
+    <button onClick = "updateStats()" class="buttons">Pass<br>Turn</button> 
+    <button class = "buttons" class="cashDisplay" id="cashDisplay2">Player Two Has 75 Dank</button>
     <br> <br> 
     <button class = "buttons" class="defenseDisplay" id="defenseDisplay1">No Front Line Soldier</button>
     <button class = "buttons" id="turnDisplay">Player One's Turn!</button>
