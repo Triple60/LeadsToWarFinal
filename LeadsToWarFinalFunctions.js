@@ -159,8 +159,8 @@ var createTank = function(turn) {
             $('#turnDisplay').html("Player Two's Turn!");
             cash1 = cash1 + 25
         }
-         $('#cashDisplay1').html("Player One Has " + cash1 + " Dank")
-         $('#cashDisplay2').html("Player Two Has " + cash2 + " Dank")
+         $('#cashDisplay1').html("Player One Has " + cash1 + " Cash")
+         $('#cashDisplay2').html("Player Two Has " + cash2 + " Cash")
          $('#castleHealthDisplay1').html("Castle Has " + tower1health + " Health")
          $('#castleHealthDisplay2').html("Castle Has " + tower2health + " Health")
          if(player1UnitArray.length > 0) {
