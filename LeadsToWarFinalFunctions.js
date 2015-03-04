@@ -59,7 +59,10 @@ var createTank = function(turn) {
         var unitId = unitId.substr(7, 7);
         if (turn===1) {
             var critChance = _.random(0, 100);
-            if (critChance < 74) {
+            if (player2UnitArray.length == 0) {
+                tower2health -= player1UnitArray[unitId-1].attack;
+            }
+            else if (critChance < 74) {
                 if (player2UnitArray.length !== 0) {
                     player2UnitArray[0].defense = player2UnitArray[0].defense - player1UnitArray[unitId-1].attack;
                 }
@@ -78,7 +81,10 @@ var createTank = function(turn) {
         }
         else if (turn===-1) {
             var critChance = _.random(0, 100);
-            if (critChance < 74) {                
+            if (player1UnitArray.length == 0) {
+                tower1health -= player2UnitArray[unitId-1].attack;
+            }
+            else if (critChance < 74) {                
                 if (player1UnitArray.length !== 0) {
                     player1UnitArray[0].defense =  player1UnitArray[0].defense - player2UnitArray[(switchFromP2(parseInt(unitId)) - 1) ].attack;
                 }
@@ -96,21 +102,30 @@ var createTank = function(turn) {
                 }
             }
         }
-        if (player2UnitArray[0].defense <= 0) {
-            if (player2UnitArray[0].name === "") $('#activityFeed').html("Unnamed unit is dead!");   
-            else $('#activityFeed').html(player2UnitArray[0].name + " is dead!");
-           
-            removeImage(player2UnitArray[0].riflemanNumber);
-            player2UnitArray.splice(0, 1); 
-            
+        if (player2UnitArray.length !== 0) {
+            if (player2UnitArray[0].defense <= 0) {
+                if (player2UnitArray[0].name === "") $('#activityFeed').html("Unnamed unit is dead!");   
+                else $('#activityFeed').html(player2UnitArray[0].name + " is dead!");
+                removeImage(player2UnitArray[0].riflemanNumber);
+                player2UnitArray.splice(0, 1); 
+            }
         } 
 
-        if (player1UnitArray[0].defense <= 0) {
-            if (player1UnitArray[0].name === "") $('#activityFeed').html("Unnamed unit is dead!");   
-            else $('#activityFeed').html(player1UnitArray[0].name + " is dead!");
-            removeImage(player1UnitArray[0].riflemanNumber);
-            player1UnitArray.splice(0, 1); 
+        if (player1UnitArray.length !== 0) {
+            if (player1UnitArray.length == 0 && player1UnitArray[0].defense <= 0) {
+                if (player1UnitArray[0].name === "") $('#activityFeed').html("Unnamed unit is dead!");   
+                else $('#activityFeed').html(player1UnitArray[0].name + " is dead!");
+                removeImage(player1UnitArray[0].riflemanNumber);
+                player1UnitArray.splice(0, 1); 
+            }
         }
+        if (tower2health == 0) {
+            alert("Player 1 Wins!");
+        }
+        if (tower1health == 0) {
+            alert("Player 2 Wins!");
+        }
+        
 
         updateStats();
 
