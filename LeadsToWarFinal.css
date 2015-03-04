@@ -39,6 +39,19 @@
 	right: 1%;
 }
 
+
+
+#castleHealthDisplay1 {
+	position: absolute;	
+	left: 1%;
+}
+
+#castleHealthDisplay2 {
+	position: absolute;	
+	right: 1%;
+}
+
+
 #turnDisplay {
 	width: 20%;
 	height: 15%;

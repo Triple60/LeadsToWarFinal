@@ -61,6 +61,7 @@ var createTank = function(turn) {
             var critChance = _.random(0, 100);
             if (player2UnitArray.length == 0) {
                 tower2health -= player1UnitArray[unitId-1].attack;
+                $('#activityFeed').html("Player One rekt the castle!");
             }
             else if (critChance < 74) {
                 if (player2UnitArray.length !== 0) {
@@ -83,6 +84,7 @@ var createTank = function(turn) {
             var critChance = _.random(0, 100);
             if (player1UnitArray.length == 0) {
                 tower1health -= player2UnitArray[unitId-1].attack;
+                $('#activityFeed').html("Player One rekt the castle!");
             }
             else if (critChance < 74) {                
                 if (player1UnitArray.length !== 0) {
@@ -159,6 +161,8 @@ var createTank = function(turn) {
         }
          $('#cashDisplay1').html("Player One Has " + cash1 + " Dank")
          $('#cashDisplay2').html("Player Two Has " + cash2 + " Dank")
+         $('#castleHealthDisplay1').html("Castle Has " + tower1health + " Health")
+         $('#castleHealthDisplay2').html("Castle Has " + tower2health + " Health")
          if(player1UnitArray.length > 0) {
             $('#defenseDisplay1').html("Front Line Soldier Has " + player1UnitArray[0].defense + " Health");
         } else {

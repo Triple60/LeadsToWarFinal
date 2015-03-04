@@ -1,7 +1,7 @@
 var cash1 = 75;
 var cash2 = 75;
-var tower1health = 100;
-var tower2health = 100;
+var tower1health = 50;
+var tower2health = 50;
 var turn = 1;
     //This code was worked on primarily by Ayush Sharma.
 
