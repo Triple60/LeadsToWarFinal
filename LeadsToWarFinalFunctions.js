@@ -114,7 +114,7 @@ var createTank = function(turn) {
         } 
 
         if (player1UnitArray.length !== 0) {
-            if (player1UnitArray.length == 0 && player1UnitArray[0].defense <= 0) {
+            if (player1UnitArray[0].defense <= 0) {
                 if (player1UnitArray[0].name === "") $('#activityFeed').html("Unnamed unit is dead!");   
                 else $('#activityFeed').html(player1UnitArray[0].name + " is dead!");
                 removeImage(player1UnitArray[0].riflemanNumber);
